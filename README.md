@@ -1,43 +1,58 @@
-# GemExample
+# How to create a Gem in Ruby
+## Getting Started
+first all, we'll do it in linux OS and use us bundle. 
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/gem_example`. To experiment with that code, run `bin/console` for an interactive prompt.
+you should install [rbenv](https://github.com/rbenv/rbenv) for to work with ruby, for this example use the ruby version 2.6.3 
+open your console and type 
 
-TODO: Delete this and the text above, and describe your gem
+> $ **ruby -v**  
+    # => 2.6.3
 
-## Installation
+next, we need to install bundle
+> $ **gem install bundle** 
 
-Add this line to your application's Gemfile:
+we check that it is install with 
+> $ **bundle -v**  
+    #=> Bundler version 2.0.2
 
-```ruby
-gem 'gem_example'
-```
+## Create your gem
+next step, we need to select a name for our gem, you can follow the [basic recomendations](https://guides.rubygems.org/patterns/#consistent-naming) to do it, and for create the gem is very easy, just type.
 
-And then execute:
+> $ **bundle gem name-your-gem **
 
-    $ bundle
 
-Or install it yourself as:
+there is some thing that you should answer before to create your gem, 
 
-    $ gem install gem_example
+> $ Do you want to generate tests with your gem? rspec   
+  $ Do you want to license your code permissively under the MIT license? y   
+  $ Do you want to include a code of conduct in gems you generate? y
 
-## Usage
+## Setting up .Gemspec  
+and it is all. you have a gem but you need to configure the file **.gemspec**
 
-TODO: Write usage instructions here
+>  spec.name          = "name-your-gem"  
+   spec.authors       = ["your name"]  
+   spec.email         = ["your email example@gmail.com"]         
+   spec.summary       = "Summary"   
+   spec.description   = "description"   
+   spec.homepage      = "your repo in github"     
+   spec.license       = "MIT"        
+   spec.metadata["source_code_uri"] = "your github"   
+   spec.metadata["changelog_uri"] = "your github"  
 
-## Development
+## Finally
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+you principal code you should put in *lib/name-your-gem.rb*
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+and you proof *TDD* should put it in spec/name-your-gem.spec
 
-## Contributing
+finally you can do your gem exec with
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/gem_example. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+> $ **gem build name-your-gem.gemspec**
 
-## License
+## RubyGems
+to post your gem in [RubyGems](https://rubygems.org/) 
 
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+> $ **gem push name-your-gem.gem**
 
-## Code of Conduct
 
-Everyone interacting in the GemExample project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/gem_example/blob/master/CODE_OF_CONDUCT.md).
